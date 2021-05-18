@@ -5,6 +5,12 @@
  */
 
 
+import java.io.BufferedReader;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -13,10 +19,20 @@ import java.util.HashMap;
  */
 public class Chat implements Runnable {
 
-    private HashMap<Integer,HashMap<String, Integer>>chat= new HashMap<Integer,HashMap<String, Integer>>();
+    private String nome;
+private ArrayList<Object>messaggi;
+private int indirizzo;
+private ArrayList<String>membri;
+private String messaggio;
+private Socket accedi;
+private PrintWriter out;
+private BufferedReader in;
+private int tipologia;
+private OutputStream oi;
+private ObjectOutputStream oo;
 
     public Chat(HashMap<Integer,HashMap<String, Integer>>chat) {
-        this.chat=chat;
+        
     }
     
 

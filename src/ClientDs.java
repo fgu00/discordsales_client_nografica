@@ -36,7 +36,7 @@ import javafx.stage.Stage;
  * @author lorenzotresoldi
  */
 public class ClientDs extends Application {
-    public static guiScena1 scena1;
+    public static visualizza_canali scena1;
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -56,10 +56,10 @@ public class ClientDs extends Application {
             btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Canali ac;
+                utente ac;
                 try {
                     out.println("1:"+nome1.getText()+":"+password.getText());
-                    ac=(Canali)o.readObject();
+                    ac=(utente)o.readObject();
                     
                 } catch (IOException ex) {
                     Logger.getLogger(ClientDs.class.getName()).log(Level.SEVERE, null, ex);

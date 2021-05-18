@@ -5,8 +5,13 @@
  */
 
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.io.Serializable;
+import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Vector;
 
 
 
@@ -15,12 +20,19 @@ import java.util.HashMap;
  * @author lorenzotresoldi
  */
 public class Canali implements Serializable{
-    private HashMap<String, Integer> canali = new HashMap<String, Integer>();
+        private String nome;
+        private int indirizzo;
+        private Vector chat=new Vector();
+        private Vector categorie=new Vector();
+        private ArrayList<utente>persone=new ArrayList<utente>();
+        private Object immagine="";
+        private indirizzo a=new indirizzo();
+        private Socket accedi=new Socket();
+        private BufferedReader in;
+        private PrintWriter out;
 
     
-    public Canali(HashMap<String, Integer>canali) {
-        this.canali=canali;
-    }
+  
     
 
     public HashMap<String, Integer> getCanali() {

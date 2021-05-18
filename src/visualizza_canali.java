@@ -17,14 +17,16 @@ public class visualizza_canali {
    private Stage s;
     private Scene scena; 
     Button[]lista;
-    Canali c;
+    utente c;
 
-    public visualizza_canali(Stage s) {
+    public visualizza_canali(Stage s,utente u) {
         this.s = s;
-        l;
+        c=u;
     }
      public void gui(){
-       
+         for (int i = 0; i < c; i++) {
+             
+         }
          l=new Label("scena 1");
          lo=new TextField();
          pa=new TextField();
