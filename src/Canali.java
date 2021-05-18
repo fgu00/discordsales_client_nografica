@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package client.ds;
 
+
+import java.io.Serializable;
 import java.util.HashMap;
 
 
@@ -13,7 +14,7 @@ import java.util.HashMap;
  *
  * @author lorenzotresoldi
  */
-public class Canali implements Runnable{
+public class Canali implements Serializable{
     private HashMap<String, Integer> canali = new HashMap<String, Integer>();
 
     
@@ -21,12 +22,6 @@ public class Canali implements Runnable{
         this.canali=canali;
     }
     
-
-
-    @Override
-    public void run() {
-        
-    }
 
     public HashMap<String, Integer> getCanali() {
         return canali;
