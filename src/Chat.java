@@ -41,13 +41,13 @@ private ObjectOutputStream oo;
         
     }
 
-    public HashMap<Integer, HashMap<String, Integer>> getChat() {
-        return chat;
-    }
-    
-    public HashMap<String, Integer> cerca(int nChat){
-        return chat.get(nChat);
-    }
+//    public HashMap<Integer, HashMap<String, Integer>> getChat() {
+//        return chat;
+//    }
+//    
+//    public HashMap<String, Integer> cerca(int nChat){
+//        return chat.get(nChat);
+//    }
     
     public void scrivi(){
         

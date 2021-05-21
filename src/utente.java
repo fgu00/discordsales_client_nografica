@@ -21,8 +21,11 @@ public class utente {
     private indirizzo a;
     private ArrayList<Canali>indirizzi_canali=new ArrayList<Canali>();   
 
-public ArrayList<Canali> getCanali(){
- return indirizzi_canali;
-
+public int getCanali_numero(){
+ return indirizzi_canali.size();
+}
+public Canali getcanali(int a){
+        return indirizzi_canali.get(a);
+    
 }
 }

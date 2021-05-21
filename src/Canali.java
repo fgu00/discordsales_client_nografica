@@ -35,14 +35,11 @@ public class Canali implements Serializable{
   
     
 
-    public HashMap<String, Integer> getCanali() {
-        return canali;
+    public String getNome() {
+        return nome;
     }
     
-    public int cerca(String nomeCanale){
-        return canali.get(nomeCanale);
-               
-    }
+   
     
     
     

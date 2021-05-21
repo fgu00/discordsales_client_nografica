@@ -5,7 +5,6 @@
  */
 
 
-import client.ds.Canali;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -37,6 +36,7 @@ import javafx.stage.Stage;
  */
 public class ClientDs extends Application {
     public static visualizza_canali scena1;
+    public static Scene scene;
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -56,11 +56,12 @@ public class ClientDs extends Application {
             btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                utente ac;
+                utente ac=null;
                 try {
                     out.println("1:"+nome1.getText()+":"+password.getText());
                     ac=(utente)o.readObject();
-                    
+                    scena1.gui();
+                    scene=scena1.getScena();
                 } catch (IOException ex) {
                     Logger.getLogger(ClientDs.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
@@ -82,7 +83,7 @@ public class ClientDs extends Application {
             
             VBox vbox = new VBox(nome, nome1, password, password1, btn, link);
             vbox.setPadding(new Insets(300, 50, 50, 50));
-            Scene scene = new Scene(vbox, 900,750);
+             scene = new Scene(vbox, 900,750);
             
             btn.setOnAction(new EventHandler<ActionEvent>() {
                 
@@ -136,6 +137,18 @@ public class ClientDs extends Application {
                 
             
     }
+
+//    private static class InputStreamImpl extends InputStream {
+//
+//        public InputStreamImpl(InputStream inputStream) {
+//            super(inputStream);
+//        }
+//
+//        @Override
+//        public int read() throws IOException {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//    }
 
     private static class InputStreamImpl extends InputStream {
 
