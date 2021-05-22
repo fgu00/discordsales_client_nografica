@@ -25,14 +25,11 @@ public class Visualizza {
     }
     
     public void stampa_canale(String nomeCanale){
-        int var;
-        var=canali.cerca(nomeCanale);
-        
+      
     }
     
     public void stampa_chat(int nChat){
-        HashMap<String, Integer>canaleChat;
-        canaleChat=chat.cerca(nChat);
+        
     }
 
     public void setCanali(Canali canali) {

@@ -1,4 +1,7 @@
 
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -21,20 +24,29 @@ public class visualizza_canali {
     private Button[]lista;
     private utente c;
     private VBox v;
+    private Button nw;
+    private new_canale a;
 
-    public visualizza_canali(Stage s,utente u) {
+    public visualizza_canali(Stage s,utente u) throws IOException {
         this.s = s;
         c=u;
         lista=new Button[c.getCanali_numero()];
-        
         for (int i = 0; i < lista.length; i++) {
             Button b=new Button();
             lista[i]=b;
         }
         v=new VBox();
+        nw=new Button();
+        a=new new_canale();
     }
      public void gui(){
          Canali ca=null;
+         nw.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+             ClientDs.scene=  a.getScena();
+            }
+            });
          for (int i = 0; i < c.getCanali_numero(); i++) {
             ca=c.getcanali(i);
             lista[i].setText(ca.getNome());
