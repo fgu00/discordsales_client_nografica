@@ -38,6 +38,11 @@ public class ClientDs extends Application {
     public static visualizza_canali scena1;
     public static Scene scene;
     public static Socket s = null;
+    public static  PrintWriter out = null;
+    public static  BufferedReader in=null;
+    public static InputStream FI = null;
+    public static ObjectInputStream o = null;
+    
     @Override
     public void start(Stage primaryStage) throws IOException {
          s = new Socket("127.0.0.1",20);
@@ -47,40 +52,26 @@ public class ClientDs extends Application {
         Label nome = new Label();
         Label password = new Label();
         Label nomeapp = new Label();
+        Label verifica =new Label(); 
         Button btn = new Button();
         btn.setText("accedi");
         btn.setAlignment(Pos.CENTER_RIGHT);
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                PrintWriter out = null;
                 try {
                     out = new PrintWriter(s.getOutputStream(), true);
-                } catch (IOException ex) {
-                    Logger.getLogger(ClientDs.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-                } catch (IOException ex) {
-                    Logger.getLogger(ClientDs.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                InputStream FI = null;
-                try {
+                    in = new BufferedReader(new InputStreamReader(s.getInputStream()));
                     FI = s.getInputStream();
-                } catch (IOException ex) {
-                    Logger.getLogger(ClientDs.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                ObjectInputStream o = null;
-                try {
                     o = new ObjectInputStream(FI);
-                } catch (IOException ex) {
-                    Logger.getLogger(ClientDs.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                utente ac=null;
-                try {
+                    utente ac=null;
                     System.out.println("uuuuu");
                     out.println("1:"+nome1.getText()+":"+password.getText());
+                    out.flush();
                     ac=(utente)o.readObject();
+                    if(ac==null){
+                        verifica.setText((String) o.readObject()+"uuhjeifjdid");
+                    }
                     scena1.gui();
                     scene=scena1.getScena();
                 } catch (IOException ex) {
@@ -88,7 +79,8 @@ public class ClientDs extends Application {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(ClientDs.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
+            
+        }
         });
         nome.setText("nome: ");
         password.setText("password: ");
@@ -101,18 +93,9 @@ public class ClientDs extends Application {
                 System.out.println("This link is clicked");
             }
         });
-        VBox vbox = new VBox(nome, nome1, password, password1, btn, link);
+        VBox vbox = new VBox(nome, nome1, password, password1, btn, link,verifica);
         vbox.setPadding(new Insets(300, 50, 50, 50));
         scene = new Scene(vbox, 900,750);
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                String userName=nome1.getText();
-                String password=password1.getText();
-                // chiamata di funzione per controllare username e password
-            }
-        });
         primaryStage.setScene(scene);
             primaryStage.show();
     }

@@ -20,12 +20,14 @@ import javafx.stage.Stage;
  */
 public class visualizza_canali {
    private Stage s;
-    private Scene scena; 
+    private Scene scena1; 
     private Button[]lista;
     private utente c;
     private VBox v;
     private Button nw;
     private new_canale a;
+    private Button crea;
+    private new_canale nc;
 
     public visualizza_canali(Stage s,utente u) throws IOException {
         this.s = s;
@@ -38,8 +40,17 @@ public class visualizza_canali {
         v=new VBox();
         nw=new Button();
         a=new new_canale();
+        crea=new Button();
+        nc=new new_canale();
     }
      public void gui(){
+         crea.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                nc.gui();
+                ClientDs.scene=scena1;
+            }
+            });
          Canali ca=null;
          nw.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -53,9 +64,9 @@ public class visualizza_canali {
             v.getChildren().add(lista[i]);
          }
          StackPane sp=new StackPane(v);
-         scena=new Scene(sp,900,750); 
+         scena1=new Scene(sp,900,750); 
     }
     public Scene getScena(){
-       return scena; 
+       return scena1; 
     }
 }

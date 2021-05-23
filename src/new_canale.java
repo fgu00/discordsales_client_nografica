@@ -28,7 +28,7 @@ public class new_canale {
        private StackPane sp;
        private Button crea;
        private PrintWriter out;
-        private Scene scena=null; 
+        private Scene scena1=null; 
 
     public new_canale() throws IOException {
        nome = new  TextField(); 
@@ -46,10 +46,10 @@ public class new_canale {
     public void gui(){
      v.getChildren().addAll(nome,crea);
      sp.getChildren().add(v);
-     scena=new Scene(sp,900,750);
+     scena1=new Scene(sp,900,750);
     }
     public Scene getScena(){
-          return scena;   
+          return scena1;   
     }
     
         
