@@ -47,7 +47,6 @@ public class ClientDs extends Application {
     public void start(Stage primaryStage) throws IOException {
          s = new Socket("127.0.0.1",20);
         TextField nome1 =  new TextField();
-        System.out.println("wwwwww");
         TextField password1;
         Label nome = new Label();
         Label password = new Label();
@@ -66,14 +65,15 @@ public class ClientDs extends Application {
                     o = new ObjectInputStream(FI);
                     utente ac=null;
                     System.out.println("uuuuu");
-                    out.println("1:"+nome1.getText()+":"+password.getText());
+                    out.write("1:"+nome1.getText()+":"+password.getText());
                     out.flush();
                     ac=(utente)o.readObject();
                     if(ac==null){
-                        verifica.setText((String) o.readObject()+"uuhjeifjdid");
+                        verifica.setText("utente inesistente");
+                    }else{
+                      scena1.gui();
+                    scene=scena1.getScena();   
                     }
-                    scena1.gui();
-                    scene=scena1.getScena();
                 } catch (IOException ex) {
                     Logger.getLogger(ClientDs.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
@@ -103,8 +103,23 @@ public class ClientDs extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
-        launch(args);
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+       Socket s = new Socket("127.0.0.1",20);
+       PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+        out.println("1:1:1:1:1:1");
+        out.flush();
+        utente ac=null;
+                    String p=(String)o.readObject();
+                    System.out.println(p+" cdfckdlfckd");
+                    if(p.equals("0")){
+                        System.out.println("utente inesistente");
+                       // verifica.setText("utente inesistente");
+                    }else{
+                        ac=(utente) o.readObject();
+                      scena1.gui();
+                    scene=scena1.getScena();   
+                    }
+        //launch(args);
         //Socket s = new Socket("10.1.33.31",20);
 //        String a;
         
