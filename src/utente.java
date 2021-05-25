@@ -15,11 +15,12 @@ public class utente {
     private String nome;
     private String password;
     private String mail;
-    //da cambiare perche non so come va salvata l'immaguine
     private Object immagine;
     private int indirizzo;
     private indirizzo a;
-    private ArrayList<Canali>indirizzi_canali=new ArrayList<Canali>();   
+    private ArrayList<Canali>indirizzi_canali=new ArrayList<Canali>();
+    
+    
 
 public int getCanali_numero(){
  return indirizzi_canali.size();

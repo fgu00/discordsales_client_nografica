@@ -11,9 +11,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.net.Socket;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -105,20 +108,56 @@ public class ClientDs extends Application {
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
        Socket s = new Socket("127.0.0.1",20);
+       FI = s.getInputStream();
+       o = new ObjectInputStream(FI);
        PrintWriter out = new PrintWriter(s.getOutputStream(), true);
-        out.println("1:1:1:1:1:1");
-        out.flush();
-        utente ac=null;
+       OutputStream oi = s.getOutputStream();;
+       ObjectOutputStream oo = new ObjectOutputStream(oi);;
+       Scanner sc=new Scanner(System.in);
+        boolean ciclo=true;
+        while(ciclo=true){
+            System.out.println("1 per creare un nuovo account");
+            System.out.println("2 per accedere");
+            System.out.println("3 per uscire");
+            int scelta=sc.nextInt();
+            switch(scelta-1){
+                case 0:
+                    System.out.println("inserisci un nome");
+                    String nome=sc.next();
+                    System.out.println("inserisci una password");
+                    String password=sc.next();
+                    System.out.println("nserisci una mail");
+                    String mail=sc.next();
+                    String immagine=""+nome.charAt(0);
+                    oo.writeObject("0:"+nome+":"+password+":"+mail+":"+immagine);
+                    oo.flush();
+                    utente u=(utente) o.readObject();
+                    break;
+                case 1:
+                    System.out.println("inserisci il tuo nome");
+                    String nome1=sc.next();
+                    System.out.println("inserisci la tua password");
+                    String password1=sc.next();
+                    System.out.println("nserisci la tua mail");
+                    String mail1=sc.next();
+                    oo.writeObject("1:"+nome1+":"+password1+":"+mail1);
+                    oo.flush();
+                    utente ac=null;
                     String p=(String)o.readObject();
                     System.out.println(p+" cdfckdlfckd");
                     if(p.equals("0")){
                         System.out.println("utente inesistente");
-                       // verifica.setText("utente inesistente");
                     }else{
                         ac=(utente) o.readObject();
                       scena1.gui();
                     scene=scena1.getScena();   
                     }
+                break;
+                case 2:
+                    
+            }
+        
+        }
         //launch(args);
         //Socket s = new Socket("10.1.33.31",20);
 //        String a;
