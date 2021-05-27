@@ -60,16 +60,20 @@ private ObjectOutputStream oo;
         while(ciclo==true){
             System.out.println("1 per cambiare nome alla chat");
             System.out.println("2 per scrivere un messaggio");
+            System.out.println("4 per invitare un nuovo membro nella chat");
+            System.out.println("5 per eliminare un utente");
+            System.out.println("6 per uscire");
+            
             int comando=sc.nextInt();
-            switch(comando-1){
-                case 0:
+            switch(comando){
+                case 1:
                  //per cambiare il nome
                     System.out.println("inserisci il nuovo nome da dare alla chat");
                     String nome=sc.next();
                     ClientDs.oo.writeObject("1:"+nome);
                     ClientDs.oo.flush();
                     break;
-                case 1:
+                case 2:
                     //per scrivere un messaggio
                      ClientDs.oo.writeObject("2:");
                     ClientDs.oo.flush();
@@ -77,13 +81,30 @@ private ObjectOutputStream oo;
                      ClientDs.oo.writeObject(messaggio);
                     ClientDs.oo.flush();
                     break;
-                case 2:
+                case 3:
                     //per stampare 
                     ClientDs.oo.writeObject("3:");
                     ClientDs.oo.flush();
                     break;
-                case 3:
-                    
+                case 4:
+                    //per invitare un utente nella chat
+                    System.out.println("inserisci l'indirizzo ID del utente");
+                    String id=sc.next();
+                    ClientDs.oo.writeObject("4:"+id);
+                    ClientDs.oo.flush();
+                    break;
+                case 5:
+                    //per eliminare un utente da una chat
+                    System.out.println("inserisci l'indirizzo del utente dal eliminare");
+                    String id2=sc.next();
+                    ClientDs.oo.writeObject("5:"+id2);
+                    ClientDs.oo.flush();
+                    break;
+                case 6:
+                    //per uscire
+                     ClientDs.oo.writeObject("6:");
+                    ClientDs.oo.flush();
+                    break;
             }
         }
     }
