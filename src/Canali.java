@@ -42,10 +42,22 @@ public class Canali implements Serializable{
     public int getIndirizzo() {
         return indirizzo;
     }
+    public String ncose(){
+            return categorie.size()+":"+chat.size();   
+        }
+    public String nomechat(int a){
+        Chat ch=(Chat) chat.get(a);
+            return ch.getNome();
+    }
+    public String nomecategoria(int a){
+        categorie ct=(categorie) categorie.get(a);
+            return ct.getNome();  
+    }
+    }
     
     
    
     
     
     
-}
+

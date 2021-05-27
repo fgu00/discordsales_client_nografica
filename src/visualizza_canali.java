@@ -1,8 +1,4 @@
 
-import static ClientDs.ac;
-import static ClientDs.ac;
-import static ClientDs.ac;
-import static ClientDs.oo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -34,8 +30,10 @@ public class visualizza_canali {
     private new_canale a;
     private Button crea;
     private new_canale nc;
+    private Visualizza vis;
 
     public visualizza_canali() {
+        vis=new Visualizza();
     }
 
     

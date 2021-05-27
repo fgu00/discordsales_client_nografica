@@ -27,4 +27,8 @@ public class categorie {
     private ObjectOutputStream oo;
     private PrintWriter out;
     private BufferedReader in;  
+    
+    public String getNome(){
+       return nome;  
+    }
 }

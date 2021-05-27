@@ -6,6 +6,7 @@
 
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  *
@@ -17,11 +18,15 @@ import java.util.HashMap;
 public class Visualizza {
     private Canali canali;
     private Chat chat;
+    private Scanner sc=new Scanner(System.in);
     
 
     public Visualizza(Canali canali, Chat chat) {
         this.canali = canali;
         this.chat = chat;
+    }
+    public Visualizza(){
+        
     }
     
     public void stampa_canale(String nomeCanale){
@@ -39,8 +44,26 @@ public class Visualizza {
     public void setChat(Chat chat) {
         this.chat = chat;
     }
-    
-    
-}
+    public void setcanale(Canali ca){
+       canali=ca;
+    }
+     //chat
+    public void sceltaCanale() {
+        String numeri=canali.ncose();
+        String[]quantita=numeri.split(":");
+        for (int i = 0; i < Integer.parseInt(quantita[0]); i++) {
+            System.out.println(i+" per accedere al canale "+canali.nomechat(i));
+        }
+        for (int i = 0; i < Integer.parseInt(quantita[1]); i++) {
+           System.out.println((i+quantita[0])+" per accedere al canale "+canali.nomecategoria(i));  
+        }
+          int numero=sc.nextInt();
+          
+        }
+        
+
+        }  
+
+
     
     

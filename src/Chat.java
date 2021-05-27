@@ -36,7 +36,9 @@ private ObjectOutputStream oo;
     public Chat(HashMap<Integer,HashMap<String, Integer>>chat) {
         
     }
-    
+    public String getNome(){
+        return nome;  
+    }
 
     @Override
     public void run() {
