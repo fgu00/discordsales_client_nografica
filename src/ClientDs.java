@@ -45,6 +45,8 @@ public class ClientDs extends Application {
     public static  BufferedReader in=null;
     public static InputStream FI = null;
     public static ObjectInputStream o = null;
+    public static utente ac=null;
+    public static  ObjectOutputStream oo =null;
     
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -112,16 +114,19 @@ public class ClientDs extends Application {
        o = new ObjectInputStream(FI);
        PrintWriter out = new PrintWriter(s.getOutputStream(), true);
        OutputStream oi = s.getOutputStream();;
-       ObjectOutputStream oo = new ObjectOutputStream(oi);;
+        oo = new ObjectOutputStream(oi);;
        Scanner sc=new Scanner(System.in);
+       visualizza_canali vc=new visualizza_canali();
         boolean ciclo=true;
         while(ciclo=true){
             System.out.println("1 per creare un nuovo account");
             System.out.println("2 per accedere");
-            System.out.println("3 per uscire");
+            System.out.println("3 per creare un nuovo canale");
+            System.out.println("4 per uscire");
             int scelta=sc.nextInt();
             switch(scelta-1){
                 case 0:
+                    //accedi per la prima volta
                     System.out.println("inserisci un nome");
                     String nome=sc.next();
                     System.out.println("inserisci una password");
@@ -134,6 +139,7 @@ public class ClientDs extends Application {
                     utente u=(utente) o.readObject();
                     break;
                 case 1:
+                    //accedi se hai giua un account
                     System.out.println("inserisci il tuo nome");
                     String nome1=sc.next();
                     System.out.println("inserisci la tua password");
@@ -142,18 +148,34 @@ public class ClientDs extends Application {
                     String mail1=sc.next();
                     oo.writeObject("1:"+nome1+":"+password1+":"+mail1);
                     oo.flush();
-                    utente ac=null;
                     String p=(String)o.readObject();
                     System.out.println(p+" cdfckdlfckd");
                     if(p.equals("0")){
                         System.out.println("utente inesistente");
                     }else{
-                        ac=(utente) o.readObject();
-                      scena1.gui();
-                    scene=scena1.getScena();   
+                        ac=(utente) o.readObject(); 
                     }
                 break;
                 case 2:
+                    //per creare un canale 
+                    System.out.println("inserici il nome del nuovo canale");
+                    String nome2=sc.next();
+                    oo.writeObject("2:"+nome2);
+                    ac=(utente) o.readObject(); 
+                    break;
+                case 3:
+                    //accedi ai canali
+                    vc.Accedi_canali();
+                    break;
+                case 4:
+                    //eliminare un canale
+                    vc.elimina_canale();
+                    ac=(utente) o.readObject(); 
+                    break;
+                case 5:
+                    //uscire
+                   oo.writeObject("4:");
+                   break;
                     
             }
         

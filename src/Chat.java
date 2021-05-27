@@ -6,12 +6,14 @@
 
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  *
@@ -52,7 +54,39 @@ private ObjectOutputStream oo;
     public void scrivi(){
         
     }
-    
+    public void azioni_chat() throws IOException{
+        Scanner sc=new Scanner(System.in);
+        boolean ciclo=true;
+        while(ciclo==true){
+            System.out.println("1 per cambiare nome alla chat");
+            System.out.println("2 per scrivere un messaggio");
+            int comando=sc.nextInt();
+            switch(comando-1){
+                case 0:
+                 //per cambiare il nome
+                    System.out.println("inserisci il nuovo nome da dare alla chat");
+                    String nome=sc.next();
+                    ClientDs.oo.writeObject("1:"+nome);
+                    ClientDs.oo.flush();
+                    break;
+                case 1:
+                    //per scrivere un messaggio
+                     ClientDs.oo.writeObject("2:");
+                    ClientDs.oo.flush();
+                    String messaggio=sc.next();
+                     ClientDs.oo.writeObject(messaggio);
+                    ClientDs.oo.flush();
+                    break;
+                case 2:
+                    //per stampare 
+                    ClientDs.oo.writeObject("3:");
+                    ClientDs.oo.flush();
+                    break;
+                case 3:
+                    
+            }
+        }
+    }
     
     
     

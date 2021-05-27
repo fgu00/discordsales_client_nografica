@@ -38,6 +38,11 @@ public class Canali implements Serializable{
     public String getNome() {
         return nome;
     }
+
+    public int getIndirizzo() {
+        return indirizzo;
+    }
+    
     
    
     

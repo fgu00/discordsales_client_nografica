@@ -29,4 +29,9 @@ public Canali getcanali(int a){
         return indirizzi_canali.get(a);
     
 }
+
+    public ArrayList<Canali> getIndirizzi_canali() {
+        return indirizzi_canali;
+    }
+
 }
