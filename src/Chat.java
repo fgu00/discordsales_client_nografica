@@ -33,7 +33,7 @@ private int tipologia;
 private OutputStream oi;
 private ObjectOutputStream oo;
 
-    public Chat(HashMap<Integer,HashMap<String, Integer>>chat) {
+    public Chat(String nome) {
         
     }
     public String getNome(){

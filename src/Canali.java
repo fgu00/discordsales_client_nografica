@@ -67,7 +67,7 @@ public class Canali implements Serializable{
     public Vector getCategorie() {
         return categorie;
     }
-    public void azione_canale() throws IOException{
+    public void azione_canale() throws IOException, ClassNotFoundException{
          Scanner sc=new Scanner(System.in);
         boolean ciclo=true;
         while(ciclo==true){
@@ -93,8 +93,65 @@ public class Canali implements Serializable{
                     break;
                 case 4:
                     //creare una chat
-                    
-                    
+                    System.out.println("inserisci il nome della nuova chat");
+                    String nomec=sc.next();
+                    int tipologia=0;
+                    boolean ciclo2=true;
+                    while(ciclo2=true){
+                        System.out.println("0 per mettere la chat publica");
+                        System.out.println("1 per mettere la chat private");
+                        int comado=sc.nextInt();
+                        switch(comando){
+                            case 0:
+                                tipologia=0;
+                                break;
+                            case 1:
+                                tipologia=1;
+                                break;
+                        }
+                        
+                    }
+                    ClientDs.oo.writeObject("5:"+nomec+":"+tipologia);
+                    ClientDs.oo.flush();
+                    break;
+                case 5:
+                    //creare una categoria
+                    System.out.println("inserisci il nome della nuova categoria");
+                    String nomeg=sc.next();
+                    ClientDs.oo.writeObject("6:"+nomeg);
+                    ClientDs.oo.flush();
+                    break;
+                case 6:
+                    //eliminare una chat
+                    for (int i = 0; i < chat.size(); i++) {
+                        Chat ca=(Chat) chat.get(i);
+                        System.out.println(i+" per eliminare la chat "+ca.getNome());   
+                    }
+                int numero=sc.nextInt();
+                ClientDs.oo.writeObject("7:"+numero);
+                ClientDs.oo.flush();
+                    String m=(String) ClientDs.o.readObject();
+                    if(m.equals("")){
+                        System.out.println("chat eliminata con sucesso");
+                    }
+                    break;
+                case 7:
+                    //eliminare una categoria
+                    for (int i = 0; i < categorie.size(); i++) {
+                        categorie ca=(categorie) categorie.get(i);
+                        System.out.println(i+" per eliminare la categoria "+ca.getNome());   
+                    }
+                int numero2=sc.nextInt();
+                ClientDs.oo.writeObject("8:"+numero2);
+                ClientDs.oo.flush();
+                    String m2=(String) ClientDs.o.readObject();
+                    if(m2.equals("")){
+                        System.out.println("categoria eliminata con sucesso");
+                    }
+                    break;
+                case 8:
+                  ClientDs.oo.writeObject("9:");    
+                    ciclo=false;
             }
             }
         }
