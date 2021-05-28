@@ -56,6 +56,9 @@ private ObjectOutputStream oo;
     public void scrivi(){
         
     }
+    public int getIndirizzo(){
+        return indirizzo;   
+    }
     public void azioni_chat() throws IOException{
         Scanner sc=new Scanner(System.in);
         boolean ciclo=true;

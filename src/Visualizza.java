@@ -5,6 +5,7 @@
  */
 
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -48,17 +49,32 @@ public class Visualizza {
        canali=ca;
     }
      //chat
-    public void sceltaCanale() {
+    public void sceltaCanale() throws IOException {
+        boolean chat=true;
         String numeri=canali.ncose();
         String[]quantita=numeri.split(":");
         for (int i = 0; i < Integer.parseInt(quantita[0]); i++) {
             System.out.println(i+" per accedere al canale "+canali.nomechat(i));
         }
         for (int i = 0; i < Integer.parseInt(quantita[1]); i++) {
-           System.out.println((i+quantita[0])+" per accedere al canale "+canali.nomecategoria(i));  
+           System.out.println((i+ Integer.parseInt(quantita[0]))+" per accedere al canale "+canali.nomecategoria(i));  
         }
           int numero=sc.nextInt();
-          
+          if(numero> Integer.parseInt(quantita[0])){
+              chat=false;
+              numero=numero- Integer.parseInt(quantita[0]);
+          }
+          if(chat==true){
+              Chat ch=(Chat) canali.getChat().get(numero);
+              ClientDs.out.write("3:"+ch.getIndirizzo());
+              ClientDs.out.flush();
+              ch.azioni_chat();
+          }else{
+              categorie ct=(categorie) canali.getCategorie().get(numero);
+              ClientDs.out.write("4:"+numero);
+              ClientDs.out.flush();
+              
+          }
         }
         
 

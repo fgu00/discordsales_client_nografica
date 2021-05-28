@@ -81,7 +81,7 @@ public class visualizza_canali {
         Scanner sc=new Scanner(System.in);
         ArrayList<Canali>indirizzi_canali= ClientDs.ac.getIndirizzi_canali();
         for (int i = 0; i < indirizzi_canali.size()-1; i++) {
-            System.out.println(i+1+" per accedere al canale "+indirizzi_canali.get(i).getNome());  
+            System.out.println(i+1+" per accedere al canale "+indirizzi_canali.get(i).getImmagine()+indirizzi_canali.get(i).getNome());  
         }
         System.out.println("inserisci il numero del canale a cui vuoi accedere");
         int numero=sc.nextInt()-1;
@@ -92,7 +92,7 @@ public class visualizza_canali {
        Scanner sc=new Scanner(System.in);
         ArrayList<Canali>indirizzi_canali= ClientDs.ac.getIndirizzi_canali();
         for (int i = 0; i < indirizzi_canali.size()-1; i++) {
-            System.out.println(i+1+" per accedere al canale "+indirizzi_canali.get(i).getNome());  
+            System.out.println(i+1+" per accedere al canale "+indirizzi_canali.get(i).getImmagine()+indirizzi_canali.get(i).getNome());  
         } 
          System.out.println("inserisci il numero del canale da eliminare");
          int numero=sc.nextInt()-1;

@@ -31,4 +31,5 @@ public class categorie {
     public String getNome(){
        return nome;  
     }
+    
 }

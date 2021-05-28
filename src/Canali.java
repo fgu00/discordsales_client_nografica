@@ -6,11 +6,13 @@
 
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.Vector;
 
 
@@ -30,6 +32,7 @@ public class Canali implements Serializable{
         private Socket accedi=new Socket();
         private BufferedReader in;
         private PrintWriter out;
+        private Visualizza vs=new Visualizza();
 
     
   
@@ -37,6 +40,9 @@ public class Canali implements Serializable{
 
     public String getNome() {
         return nome;
+    }
+    public String getImmagine(){
+            return (String) immagine;  
     }
 
     public int getIndirizzo() {
@@ -53,7 +59,47 @@ public class Canali implements Serializable{
         categorie ct=(categorie) categorie.get(a);
             return ct.getNome();  
     }
+
+    public Vector getChat() {
+        return chat;
     }
+
+    public Vector getCategorie() {
+        return categorie;
+    }
+    public void azione_canale() throws IOException{
+         Scanner sc=new Scanner(System.in);
+        boolean ciclo=true;
+        while(ciclo==true){
+             int comando=sc.nextInt();
+            switch(comando){
+                case 1:
+                    //cambiare nome
+                    System.out.println("inserire un nuovo nome");
+                    String nome=sc.next();
+                     ClientDs.oo.writeObject("1:"+nome);
+                    ClientDs.oo.flush();
+                    break;
+                case 2:
+                    //cambiare immagine
+                    System.out.println("inserisci la nuova immagine del canale");
+                    String immagine=sc.next();
+                    ClientDs.oo.writeObject("2:"+immagine);
+                    ClientDs.oo.flush();
+                    break;
+                case 3:
+                    //accedere a chat e categorie
+                    vs.sceltaCanale();
+                    break;
+                case 4:
+                    //creare una chat
+                    
+                    
+            }
+            }
+        }
+    }
+    
     
     
    
