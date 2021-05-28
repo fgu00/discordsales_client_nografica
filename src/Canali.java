@@ -71,6 +71,14 @@ public class Canali implements Serializable{
          Scanner sc=new Scanner(System.in);
         boolean ciclo=true;
         while(ciclo==true){
+            System.out.println("1 per cambiare il nome del canale");
+            System.out.println("2 per cambiare l'immagine del canale");
+            System.out.println("3 per accedere ad una chat o ad una categoria");
+            System.out.println("4 per creare una nuova chat");
+            System.out.println("5 per creare una categoria");
+            System.out.println("6 per eliminare una chat");
+            System.out.println("7 per eliminare una categoria");
+            System.out.println("8 per uscire");
              int comando=sc.nextInt();
             switch(comando){
                 case 1:
@@ -101,7 +109,7 @@ public class Canali implements Serializable{
                         System.out.println("0 per mettere la chat publica");
                         System.out.println("1 per mettere la chat private");
                         int comado=sc.nextInt();
-                        switch(comando){
+                        switch(comado){
                             case 0:
                                 tipologia=0;
                                 break;
