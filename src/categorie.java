@@ -105,6 +105,7 @@ public class categorie {
                 ciclo=false;
                  ClientDs.out.write("5:");
               ClientDs.out.flush();
+                break;
         }
     }
     }
