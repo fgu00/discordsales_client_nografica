@@ -1,5 +1,6 @@
 
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
@@ -78,6 +79,7 @@ public class visualizza_canali {
        return scena1; 
     }
      public void Accedi_canali() throws IOException{
+        ObjectOutputStream o1=new ObjectOutputStream(ClientDs.s.getOutputStream());
         Scanner sc=new Scanner(System.in);
         ArrayList<Canali>indirizzi_canali= ClientDs.ac.getIndirizzi_canali();
         for (int i = 0; i < indirizzi_canali.size()-1; i++) {
@@ -85,10 +87,13 @@ public class visualizza_canali {
         }
         System.out.println("inserisci il numero del canale a cui vuoi accedere");
         int numero=sc.nextInt()-1;
-        ClientDs.oo.writeObject("3:"+ClientDs.ac.getcanali(numero).getIndirizzo());
+        o1.writeObject("3:"+ClientDs.ac.getcanali(numero).getIndirizzo());
+        o1.flush();
+        o1.close();
        
     }
      public void elimina_canale() throws IOException{
+         ObjectOutputStream o1=new ObjectOutputStream(ClientDs.s.getOutputStream());
        Scanner sc=new Scanner(System.in);
         ArrayList<Canali>indirizzi_canali= ClientDs.ac.getIndirizzi_canali();
         for (int i = 0; i < indirizzi_canali.size()-1; i++) {
@@ -96,8 +101,9 @@ public class visualizza_canali {
         } 
          System.out.println("inserisci il numero del canale da eliminare");
          int numero=sc.nextInt()-1;
-         ClientDs.oo.writeObject("4:"+ClientDs.ac.getcanali(numero).getIndirizzo());
-         ClientDs.oo.flush();
+         o1.writeObject("4:"+ClientDs.ac.getcanali(numero).getIndirizzo());
+         o1.flush();
+         o1.close();
          
      }
      
