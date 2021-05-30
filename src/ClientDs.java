@@ -161,10 +161,14 @@ public class ClientDs extends Application {
                                         break;
                                     case 2:
                                         //accedi ai canali
+                                        bw.println("3:");
+                                            bw.flush();
                                         vc.Accedi_canali();
                                         break;
                                     case 3:
                                         //eliminare un canale
+                                         bw.println("4:");
+                                            bw.flush();
                                         vc.elimina_canale();
                                         break;
                                     case 5:
@@ -192,10 +196,7 @@ public class ClientDs extends Application {
                             String mail1=sc.next();
                             bw.println("1:"+nome1+":"+password1+":"+mail1);
                             bw.flush();
-                            //o1.close();
-                            //o = new ObjectInputStream(s.getInputStream());
                             String p=in.readLine();
-                            System.out.println(p+" cdfckdlfckd");
                             if(p.equals("0")){
                                 System.out.println("utente inesistente");
                             }else{
@@ -208,6 +209,7 @@ public class ClientDs extends Application {
                                     System.out.println("3 per eliminare un canale");
                                     System.out.println("4 per cambiare le impostazione del utente");
                                      System.out.println("5 per uscire");
+                                     System.out.println("ccc");
                                     int a=sc.nextInt();
                                     switch(a){
                                         case 1:
@@ -223,11 +225,13 @@ public class ClientDs extends Application {
                                         case 2:
                                             //accedi ai canali
                                             bw.println("3:");
+                                            bw.flush();
                                             vc.Accedi_canali();
                                             break;
                                         case 3:
                                             //eliminare un canale
                                             bw.println("4:");
+                                            bw.flush();
                                             vc.elimina_canale();
                                             //ac=(utente) o.readObject();
                                             break;
@@ -244,7 +248,7 @@ public class ClientDs extends Application {
                                         u.interazioni_utente();
                                         break;
                                     }
-                                    break;
+                                    
                                     
                                 }
                                 
@@ -252,7 +256,8 @@ public class ClientDs extends Application {
                     }      } catch (IOException ex) {
                         Logger.getLogger(ClientDs.class.getName()).log(Level.SEVERE, null, ex);
                     }
-            }       } catch (IOException ex) {
+            }
+        } catch (IOException ex) {
             Logger.getLogger(ClientDs.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
