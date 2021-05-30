@@ -73,36 +73,39 @@ public class Canali implements Serializable{
         while(ciclo==true){
             System.out.println("1 per cambiare il nome del canale");
             System.out.println("2 per cambiare l'immagine del canale");
-            System.out.println("3 per accedere ad una chat o ad una categoria");
-            System.out.println("4 per creare una nuova chat");
-            System.out.println("5 per creare una categoria");
-            System.out.println("6 per eliminare una chat");
-            System.out.println("7 per eliminare una categoria");
-            System.out.println("8 per uscire");
+            System.out.println("3 per accedere ad una chat ");
+            System.out.println("4 per accedere ad una categoria");
+            System.out.println("5 per creare una nuova chat");
+            System.out.println("6 per creare una categoria");
+            System.out.println("7 per eliminare una chat");
+            System.out.println("8 per eliminare una categoria");
+            System.out.println("9 per uscire");
              int comando=sc.nextInt();
             switch(comando){
                 case 1:
                     //cambiare nome
                     System.out.println("inserire un nuovo nome");
                     String nome=sc.next();
-                     ClientDs.bw.write("1:"+nome);
+                     ClientDs.bw.println("1:"+nome);
                     ClientDs.bw.flush();
                     break;
                 case 2:
                     //cambiare immagine
                     System.out.println("inserisci la nuova immagine del canale");
                     String immagine=sc.next();
-                    ClientDs.bw.write("2:"+immagine);
+                    ClientDs.bw.println("2:"+immagine);
                     ClientDs.bw.flush();
                     break;
                 case 3:
                     //accedere a chat 
-                    ClientDs.bw.write("3:");
+                    ClientDs.bw.println("3:");
+                     ClientDs.bw.flush();
                     vs.sceltaChat();
                     break;
                 case 4:
                     //accesso alle categorie
-                    ClientDs.bw.write("4:");
+                    ClientDs.bw.println("4:");
+                    ClientDs.bw.flush();
                     vs.sceltaCategorie();
                     break;
                 case 5:
@@ -110,8 +113,6 @@ public class Canali implements Serializable{
                     System.out.println("inserisci il nome della nuova chat");
                     String nomec=sc.next();
                     int tipologia=0;
-                    boolean ciclo2=true;
-                    while(ciclo2=true){
                         System.out.println("0 per mettere la chat publica");
                         System.out.println("1 per mettere la chat private");
                         int comado=sc.nextInt();
@@ -123,22 +124,20 @@ public class Canali implements Serializable{
                                 tipologia=1;
                                 break;
                         }
-                        
-                    }
-                    ClientDs.bw.write("5:"+nomec+":"+tipologia);
+                    ClientDs.bw.println("5:"+nomec+":"+tipologia);
                     ClientDs.bw.flush();
                     break;
                 case 6:
                     //creare una categoria
                     System.out.println("inserisci il nome della nuova categoria");
                     String nomeg=sc.next();
-                    ClientDs.bw.write("6:"+nomeg);
+                    ClientDs.bw.println("6:"+nomeg);
                     ClientDs.bw.flush();
                     break;
                 case 7:
                     //eliminare una chat
-                    ClientDs.bw.write("7:"); 
-                         ClientDs.bw.flush();
+                    ClientDs.bw.println("7:"); 
+                    ClientDs.bw.flush();
                      boolean ciclo3=true;
                      while(ciclo3==true){
                      String canale= ClientDs.in.readLine();
@@ -150,14 +149,14 @@ public class Canali implements Serializable{
                      }
                          System.out.println("selezione la chat da eliminare");
                          String scelta=sc.next();
-                         ClientDs.bw.write(scelta); 
+                         ClientDs.bw.println(scelta); 
                          ClientDs.bw.flush();
                          System.out.println(ClientDs.in.readLine());
                     break;
                 case 8:
                     //eliminare una categoria
-                    ClientDs.bw.write("8:"); 
-                         ClientDs.bw.flush();
+                    ClientDs.bw.println("8:"); 
+                    ClientDs.bw.flush();
                      boolean ciclo4=true;
                      while(ciclo4==true){
                      String canale= ClientDs.in.readLine();
@@ -169,12 +168,13 @@ public class Canali implements Serializable{
                      }
                          System.out.println("selezione la chat da eliminare");
                          String scelta1=sc.next();
-                         ClientDs.bw.write(scelta1); 
+                         ClientDs.bw.println(scelta1); 
                          ClientDs.bw.flush();
                          System.out.println(ClientDs.in.readLine());
                     break;
                 case 9:
-                  ClientDs.bw.write("9:");    
+                  ClientDs.bw.println("9:");  
+                   ClientDs.bw.flush();
                     ciclo=false;
                     break;
             }

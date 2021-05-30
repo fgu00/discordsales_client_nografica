@@ -58,7 +58,7 @@ public class categorie {
                     String nomec=sc.next();
                     int tipologia=0;
                     boolean ciclo2=true;
-                    while(ciclo2=true){
+                    while(ciclo2==true){
                         System.out.println("0 per mettere la chat publica");
                         System.out.println("1 per mettere la chat private");
                         int comando=sc.nextInt();

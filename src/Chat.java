@@ -65,6 +65,7 @@ private ObjectOutputStream oo;
         while(ciclo==true){
             System.out.println("1 per cambiare nome alla chat");
             System.out.println("2 per scrivere un messaggio");
+            System.out.println("3 per aggiornare");
             System.out.println("4 per invitare un nuovo membro nella chat");
             System.out.println("5 per eliminare un utente");
             System.out.println("6 per uscire");
@@ -75,23 +76,23 @@ private ObjectOutputStream oo;
                  //per cambiare il nome
                     System.out.println("inserisci il nuovo nome da dare alla chat");
                     String nome=sc.next();
-                    ClientDs.bw.write("1:"+nome);
+                    ClientDs.bw.println("1:"+nome);
                     ClientDs.bw.flush();
                     break;
                 case 2:
                     //per scrivere un messaggio
-                     ClientDs.bw.write("2:");
+                     ClientDs.bw.println("2:");
                     ClientDs.bw.flush();
                     String messaggio=sc.next();
-                     ClientDs.bw.write(messaggio);
+                     ClientDs.bw.println(messaggio);
                     ClientDs.bw.flush();
                     break;
                 case 3:
                     //per stampare 
-                     ClientDs.bw.write("3:");
+                     ClientDs.bw.println("3:");
                     ClientDs.bw.flush();
                     boolean ciclo2=true;
-                    while(ciclo2=true){
+                    while(ciclo2==true){
                        String comado=ClientDs.in.readLine();
                        if(comado!=null){
                            System.out.println(comado); 
@@ -109,10 +110,10 @@ private ObjectOutputStream oo;
                     break;
                 case 5:
                     //per eliminare un utente da una chat
-                      ClientDs.bw.write("5:");
+                      ClientDs.bw.println("5:");
                     ClientDs.bw.flush();
                     boolean ciclo3=true;
-                    while(ciclo3=true){
+                    while(ciclo3==true){
                        String comado=ClientDs.in.readLine();
                        if(comado!=null){
                            System.out.println(comado); 
@@ -122,12 +123,12 @@ private ObjectOutputStream oo;
                     }
                     System.out.println("inserisci l'indirizzo del utente dal eliminare");
                     String id2=sc.next();
-                    ClientDs.bw.write(id2);
+                    ClientDs.bw.println(id2);
                     ClientDs.bw.flush();
                     break;
                 case 6:
                     //per uscire
-                     ClientDs.bw.write("6:");
+                     ClientDs.bw.println("6:");
                     ClientDs.bw.flush();
                     break;
             }

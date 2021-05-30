@@ -53,11 +53,10 @@ public class Visualizza {
      //chat
     public void sceltaChat() throws IOException, ClassNotFoundException {
         Scanner sc=new Scanner(System.in);
-        boolean chat=true;
        boolean ciclo=true;
        while(ciclo==true){
            String canale= ClientDs.in.readLine();
-           if(canale!=null){
+           if(!canale.equals("fine")){
                System.out.println(canale);
            }else{
                ciclo=false;
@@ -66,7 +65,8 @@ public class Visualizza {
         System.out.println("inserisci il numero della chat a cui vuoi accedere");
         String comando=sc.next();
         ClientDs.bw.println(comando);
-        this.chat.azioni_chat();
+        ClientDs.bw.flush();
+        chat.azioni_chat();
         
           }
     public void sceltaCategorie() throws IOException, ClassNotFoundException{
@@ -75,7 +75,7 @@ public class Visualizza {
        boolean ciclo=true;
        while(ciclo==true){
            String canale= ClientDs.in.readLine();
-           if(canale!=null){
+           if(!canale.equals("fine")){
                System.out.println(canale);
            }else{
                ciclo=false;
@@ -84,6 +84,7 @@ public class Visualizza {
         System.out.println("inserisci il numero della categoria a cui vuoi accedere");
         String comando=sc.next();
         ClientDs.bw.println(comando);
+        ClientDs.bw.flush();
         ca.azioni_categorie();
         
           }   
