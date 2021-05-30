@@ -94,7 +94,7 @@ public class visualizza_canali {
        }
          System.out.println("inserisci il numero del canale a cui vuoi accedere");
          String comando=sc.next();
-         ClientDs.bw.write(comando);
+         ClientDs.bw.println(comando);
          ca.azione_canale();
     }
      public void elimina_canale() throws IOException{
@@ -106,7 +106,7 @@ public class visualizza_canali {
         } 
          System.out.println("inserisci il numero del canale da eliminare");
          int numero=sc.nextInt()-1;
-          ClientDs.bw.write("4:"+ClientDs.ac.getcanali(numero).getIndirizzo());
+          ClientDs.bw.println("4:"+ClientDs.ac.getcanali(numero).getIndirizzo());
           ClientDs.bw.flush();
          
      }

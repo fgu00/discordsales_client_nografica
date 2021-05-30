@@ -49,7 +49,7 @@ public class categorie {
                 //cambiare nome
                 System.out.println("inserisci nuovo nome");
                 String nome=sc.next();
-                ClientDs.bw.write("1:"+nome);
+                ClientDs.bw.println("1:"+nome);
                 ClientDs.bw.flush();
                 break;
             case 2:
@@ -72,12 +72,12 @@ public class categorie {
                         }
                         
                     }
-                    ClientDs.bw.write("2:"+nomec+":"+tipologia);
+                    ClientDs.bw.println("2:"+nomec+":"+tipologia);
                     ClientDs.bw.flush();
                 break;
             case 3:
                 //per eliminare una chat
-                     ClientDs.bw.write("3:"); 
+                     ClientDs.bw.println("3:"); 
                      ClientDs.bw.flush();
                      boolean ciclo3=true;
                      while(ciclo3==true){
@@ -90,7 +90,7 @@ public class categorie {
                      }
                          System.out.println("selezione la chat da eliminare");
                          String scelta=sc.next();
-                         ClientDs.bw.write(scelta); 
+                         ClientDs.bw.println(scelta); 
                          ClientDs.bw.flush();
                          System.out.println(ClientDs.in.readLine());
                     break;
@@ -102,14 +102,14 @@ public class categorie {
                 }
                  int numero1=sc.nextInt();
                  Chat ch=(Chat)chat.get(numero1);
-              ClientDs.bw.write("4:"+ch.getIndirizzo());
+              ClientDs.bw.println("4:"+ch.getIndirizzo());
               ClientDs.bw.flush();
               ch.azioni_chat();
                 break;
             case 5:
                //uscire
                 ciclo=false;
-                 ClientDs.bw.write("5:");
+                 ClientDs.bw.println("5:");
               ClientDs.bw.flush();
                 break;
         }

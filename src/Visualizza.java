@@ -19,6 +19,7 @@ import java.util.Scanner;
 public class Visualizza {
     private Canali canali;
     private Chat chat;
+    private categorie ca;
     private Scanner sc=new Scanner(System.in);
     
 
@@ -27,7 +28,8 @@ public class Visualizza {
         this.chat = chat;
     }
     public Visualizza(){
-        
+        chat=new Chat();
+        ca=new categorie();
     }
     
     public void stampa_canale(String nomeCanale){
@@ -63,11 +65,11 @@ public class Visualizza {
        }
         System.out.println("inserisci il numero della chat a cui vuoi accedere");
         String comando=sc.next();
-        ClientDs.bw.write(comando);
+        ClientDs.bw.println(comando);
         this.chat.azioni_chat();
         
           }
-    public void sceltaCategorie() throws IOException{
+    public void sceltaCategorie() throws IOException, ClassNotFoundException{
      Scanner sc=new Scanner(System.in);
         boolean chat=true;
        boolean ciclo=true;
@@ -81,7 +83,8 @@ public class Visualizza {
        }
         System.out.println("inserisci il numero della categoria a cui vuoi accedere");
         String comando=sc.next();
-        ClientDs.bw.write(comando);
+        ClientDs.bw.println(comando);
+        ca.azioni_categorie();
         
           }   
     }

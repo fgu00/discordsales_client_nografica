@@ -50,7 +50,7 @@ public class ClientDs extends Application {
     public static ObjectInputStream o = null;
     public static utente ac=null;
     public static  ObjectOutputStream oo =null;
-     public static BufferedWriter bw=null;
+     public static PrintWriter bw=null;
     
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -116,13 +116,13 @@ public class ClientDs extends Application {
         try {
              s = new Socket("127.0.0.1",20);
              OutputStream versoIlClient = s.getOutputStream();
-                 bw = new BufferedWriter(  new OutputStreamWriter(versoIlClient));
+                 bw = new PrintWriter(  new OutputStreamWriter(versoIlClient),true);
                  in = new BufferedReader( new InputStreamReader(s.getInputStream()));
             Scanner sc=new Scanner(System.in);
             visualizza_canali vc=new visualizza_canali();
             utente u=new utente();
             boolean ciclo=true;
-            while(ciclo=true){
+            while(ciclo==true){
                 try {
                     System.out.println("1 per creare un nuovo account");
                     System.out.println("2 per accedere");
@@ -137,12 +137,12 @@ public class ClientDs extends Application {
                             System.out.println("inserisci una mail");
                             String mail=sc.next();
                             String immagine=""+nome.charAt(0);
-                            bw.write("0:"+nome+":"+password+":"+mail+":"+immagine);
+                            bw.println("0:"+nome+":"+password+":"+mail+":"+immagine);
                             bw.flush();
                             String m=in.readLine();
                             System.out.println(m);
                             boolean ciclo2=true;
-                            while(ciclo2=true){
+                            while(ciclo2==true){
                                 System.out.println("1 per creare un nuovo canale");
                                 System.out.println("2 per accedere ad un canale");
                                 System.out.println("3 per eliminare un canale");
@@ -154,7 +154,7 @@ public class ClientDs extends Application {
                                         //per creare un canale
                                         System.out.println("inserici il nome del nuovo canale");
                                         String nome2=sc.next();
-                                        bw.write("2:"+nome2);
+                                        bw.println("2:"+nome2);
                                         bw.flush();
                                         m=in.readLine();
                                         System.out.println(m);
@@ -169,13 +169,13 @@ public class ClientDs extends Application {
                                         break;
                                     case 5:
                                         //uscire
-                                        bw.write("5:");
+                                        bw.println("6:");
                                         ciclo2=false;
                                         ciclo=false;
                                         break;
                                     case 4:
                                         //
-                                        bw.write("4:");
+                                        bw.println("5:");
                                         bw.flush();
                                         u.interazioni_utente();
                                         break;
@@ -190,7 +190,7 @@ public class ClientDs extends Application {
                             String password1=sc.next();
                             System.out.println("nserisci la tua mail");
                             String mail1=sc.next();
-                            bw.write("1:"+nome1+":"+password1+":"+mail1);
+                            bw.println("1:"+nome1+":"+password1+":"+mail1);
                             bw.flush();
                             //o1.close();
                             //o = new ObjectInputStream(s.getInputStream());
@@ -202,7 +202,7 @@ public class ClientDs extends Application {
                               m=in.readLine();
                                 System.out.println(m);
                                 boolean ciclo3=true;
-                                while(ciclo3=true){
+                                while(ciclo3==true){
                                     System.out.println("1 per creare un nuovo canale");
                                     System.out.println("2 per accedere ad un canale");
                                     System.out.println("3 per eliminare un canale");
@@ -214,7 +214,7 @@ public class ClientDs extends Application {
                                             //per creare un canale
                                             System.out.println("inserici il nome del nuovo canale");
                                             String nome2=sc.next();
-                                            bw.write("2:"+nome2);
+                                            bw.println("2:"+nome2);
                                             bw.flush();
                                              m=in.readLine();
                                         System.out.println(m);
@@ -222,18 +222,18 @@ public class ClientDs extends Application {
                                             break;
                                         case 2:
                                             //accedi ai canali
-                                            bw.write("3:");
+                                            bw.println("3:");
                                             vc.Accedi_canali();
                                             break;
                                         case 3:
                                             //eliminare un canale
-                                            bw.write("4:");
+                                            bw.println("4:");
                                             vc.elimina_canale();
                                             //ac=(utente) o.readObject();
                                             break;
                                         case 5:
                                             //uscire
-                                            bw.write("6:");
+                                            bw.println("6:");
                                             bw.flush();
                                             ciclo3=false;
                                             ciclo=false;

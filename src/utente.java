@@ -49,30 +49,30 @@ public Canali getcanali(int a){
                 case 1:
                     System.out.println("inserisci il tuo nuovo nome");
                     String nome2=sc.next();
-                    ClientDs.bw.write("1:"+nome2);
+                    ClientDs.bw.println("1:"+nome2);
                     ClientDs.bw.flush();
                     break;
                 case 2:
                     System.out.println("inserisci la tua nuova password");
                     String password=sc.next();
-                    ClientDs.bw.write("2:"+password);
+                    ClientDs.bw.println("2:"+password);
                     ClientDs.bw.flush();
                     break;
                 case 3:
                     System.out.println("inserisci la tua nuova mail");
                     String mail=sc.next();
-                    ClientDs.bw.write("3:"+mail);
+                    ClientDs.bw.println("3:"+mail);
                     ClientDs.bw.flush();
                     break;
                 case 4:
                     System.out.println("inserisci la tua nuova immagine");
                     System.out.println("si consiglia di usare un solo carattere");
                     String immagine=sc.next();
-                    ClientDs.bw.write("4:"+immagine);
+                    ClientDs.bw.println("4:"+immagine);
                     ClientDs.bw.flush();
                     break;
                 case 5:
-                    ClientDs.bw.write("5:");
+                    ClientDs.bw.println("5:");
                     ClientDs.bw.flush(); 
                     ciclo=false;
             }
