@@ -72,24 +72,30 @@ public class categorie {
                         }
                         
                     }
-                    ClientDs.bw.write("5:"+nomec+":"+tipologia);
+                    ClientDs.bw.write("2:"+nomec+":"+tipologia);
                     ClientDs.bw.flush();
                 break;
             case 3:
                 //per eliminare una chat
-                 for (int i = 0; i < chat.size(); i++) {
-                        Chat ca=(Chat) chat.get(i);
-                        System.out.println(i+" per eliminare la chat "+ca.getNome());   
-                    }
-                int numero=sc.nextInt();
-                ClientDs.bw.write("7:"+numero);
-                ClientDs.bw.flush();
-                    String m=(String) ClientDs.o.readObject();
-                    if(m.equals("")){
-                        System.out.println("chat eliminata con sucesso");
-                    }
+                     ClientDs.bw.write("3:"); 
+                     ClientDs.bw.flush();
+                     boolean ciclo3=true;
+                     while(ciclo3==true){
+                     String canale= ClientDs.in.readLine();
+                     if(canale!=null){
+                     System.out.println(canale);
+                     }else{
+                     ciclo=false;
+                     }
+                     }
+                         System.out.println("selezione la chat da eliminare");
+                         String scelta=sc.next();
+                         ClientDs.bw.write(scelta); 
+                         ClientDs.bw.flush();
+                         System.out.println(ClientDs.in.readLine());
                     break;
             case 4:
+                //accedi ad una chat
                 for (int i = 0; i < chat.size(); i++) {
                     Chat ht=(Chat) chat.get(i);
                     System.out.println(i+" per accedere alla chat "+ht.getNome());

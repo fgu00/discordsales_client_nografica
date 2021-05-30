@@ -88,8 +88,17 @@ private ObjectOutputStream oo;
                     break;
                 case 3:
                     //per stampare 
-                    ClientDs.bw.write("3:");
+                     ClientDs.bw.write("3:");
                     ClientDs.bw.flush();
+                    boolean ciclo2=true;
+                    while(ciclo2=true){
+                       String comado=ClientDs.in.readLine();
+                       if(comado!=null){
+                           System.out.println(comado); 
+                       }else{
+                           ciclo2=false;
+                       }
+                    }
                     break;
                 case 4:
                     //per invitare un utente nella chat
@@ -100,9 +109,20 @@ private ObjectOutputStream oo;
                     break;
                 case 5:
                     //per eliminare un utente da una chat
+                      ClientDs.bw.write("5:");
+                    ClientDs.bw.flush();
+                    boolean ciclo3=true;
+                    while(ciclo3=true){
+                       String comado=ClientDs.in.readLine();
+                       if(comado!=null){
+                           System.out.println(comado); 
+                       }else{
+                           ciclo3=false;
+                       }
+                    }
                     System.out.println("inserisci l'indirizzo del utente dal eliminare");
                     String id2=sc.next();
-                    ClientDs.bw.write("5:"+id2);
+                    ClientDs.bw.write(id2);
                     ClientDs.bw.flush();
                     break;
                 case 6:

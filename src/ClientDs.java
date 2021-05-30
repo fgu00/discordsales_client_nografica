@@ -174,6 +174,7 @@ public class ClientDs extends Application {
                                         ciclo=false;
                                         break;
                                     case 4:
+                                        //
                                         bw.write("4:");
                                         bw.flush();
                                         u.interazioni_utente();
@@ -215,26 +216,30 @@ public class ClientDs extends Application {
                                             String nome2=sc.next();
                                             bw.write("2:"+nome2);
                                             bw.flush();
+                                             m=in.readLine();
+                                        System.out.println(m);
                                            // ac=(utente) o.readObject();
                                             break;
                                         case 2:
                                             //accedi ai canali
+                                            bw.write("3:");
                                             vc.Accedi_canali();
                                             break;
                                         case 3:
                                             //eliminare un canale
+                                            bw.write("4:");
                                             vc.elimina_canale();
                                             //ac=(utente) o.readObject();
                                             break;
                                         case 5:
                                             //uscire
-                                            bw.write("5:");
+                                            bw.write("6:");
                                             bw.flush();
                                             ciclo3=false;
                                             ciclo=false;
                                             break;
                                             case 4:
-                                        bw.write("4:");
+                                        bw.write("5:");
                                         bw.flush();
                                         u.interazioni_utente();
                                         break;

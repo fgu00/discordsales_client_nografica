@@ -64,6 +64,7 @@ public class Visualizza {
         System.out.println("inserisci il numero della chat a cui vuoi accedere");
         String comando=sc.next();
         ClientDs.bw.write(comando);
+        this.chat.azioni_chat();
         
           }
     public void sceltaCategorie() throws IOException{
@@ -78,7 +79,7 @@ public class Visualizza {
                ciclo=false;
            }
        }
-        System.out.println("inserisci il numero della chat a cui vuoi accedere");
+        System.out.println("inserisci il numero della categoria a cui vuoi accedere");
         String comando=sc.next();
         ClientDs.bw.write(comando);
         
