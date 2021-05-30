@@ -49,7 +49,7 @@ public class Visualizza {
        canali=ca;
     }
      //chat
-    public void sceltaCanale() throws IOException {
+    public void sceltaCanale() throws IOException, ClassNotFoundException {
         boolean chat=true;
         String numeri=canali.ncose();
         String[]quantita=numeri.split(":");
@@ -66,13 +66,14 @@ public class Visualizza {
           }
           if(chat==true){
               Chat ch=(Chat) canali.getChat().get(numero);
-              ClientDs.out.write("3:"+ch.getIndirizzo());
-              ClientDs.out.flush();
+              ClientDs.bw.write("3:"+ch.getIndirizzo());
+              ClientDs.bw.flush();
               ch.azioni_chat();
           }else{
               categorie ct=(categorie) canali.getCategorie().get(numero);
-              ClientDs.out.write("4:"+numero);
-              ClientDs.out.flush();
+              ClientDs.bw.write("4:"+numero);
+              ClientDs.bw.flush();
+              ct.azioni_categorie();
               
           }
         }

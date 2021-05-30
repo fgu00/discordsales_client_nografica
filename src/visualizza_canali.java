@@ -32,9 +32,11 @@ public class visualizza_canali {
     private Button crea;
     private new_canale nc;
     private Visualizza vis;
+    private Canali ca;
 
     public visualizza_canali() {
         vis=new Visualizza();
+        ca=new Canali();
     }
 
     
@@ -78,8 +80,7 @@ public class visualizza_canali {
     public Scene getScena(){
        return scena1; 
     }
-     public void Accedi_canali() throws IOException{
-        ObjectOutputStream o1=new ObjectOutputStream(ClientDs.s.getOutputStream());
+     public void Accedi_canali() throws IOException, ClassNotFoundException{
         Scanner sc=new Scanner(System.in);
         ArrayList<Canali>indirizzi_canali= ClientDs.ac.getIndirizzi_canali();
         for (int i = 0; i < indirizzi_canali.size()-1; i++) {
@@ -87,10 +88,9 @@ public class visualizza_canali {
         }
         System.out.println("inserisci il numero del canale a cui vuoi accedere");
         int numero=sc.nextInt()-1;
-        o1.writeObject("3:"+ClientDs.ac.getcanali(numero).getIndirizzo());
-        o1.flush();
-        o1.close();
-       
+        ClientDs.bw.write("3:"+ClientDs.ac.getcanali(numero).getIndirizzo());
+        ClientDs.bw.flush();
+       ca.azione_canale();
     }
      public void elimina_canale() throws IOException{
          ObjectOutputStream o1=new ObjectOutputStream(ClientDs.s.getOutputStream());
@@ -101,9 +101,8 @@ public class visualizza_canali {
         } 
          System.out.println("inserisci il numero del canale da eliminare");
          int numero=sc.nextInt()-1;
-         o1.writeObject("4:"+ClientDs.ac.getcanali(numero).getIndirizzo());
-         o1.flush();
-         o1.close();
+          ClientDs.bw.write("4:"+ClientDs.ac.getcanali(numero).getIndirizzo());
+          ClientDs.bw.flush();
          
      }
      

@@ -49,8 +49,8 @@ public class categorie {
                 //cambiare nome
                 System.out.println("inserisci nuovo nome");
                 String nome=sc.next();
-                ClientDs.oo.writeObject("1:"+nome);
-                ClientDs.oo.flush();
+                ClientDs.bw.write("1:"+nome);
+                ClientDs.bw.flush();
                 break;
             case 2:
                 //per creare una nuova chat
@@ -72,8 +72,8 @@ public class categorie {
                         }
                         
                     }
-                    ClientDs.oo.writeObject("5:"+nomec+":"+tipologia);
-                    ClientDs.oo.flush();
+                    ClientDs.bw.write("5:"+nomec+":"+tipologia);
+                    ClientDs.bw.flush();
                 break;
             case 3:
                 //per eliminare una chat
@@ -82,8 +82,8 @@ public class categorie {
                         System.out.println(i+" per eliminare la chat "+ca.getNome());   
                     }
                 int numero=sc.nextInt();
-                ClientDs.oo.writeObject("7:"+numero);
-                ClientDs.oo.flush();
+                ClientDs.bw.write("7:"+numero);
+                ClientDs.bw.flush();
                     String m=(String) ClientDs.o.readObject();
                     if(m.equals("")){
                         System.out.println("chat eliminata con sucesso");
@@ -96,15 +96,15 @@ public class categorie {
                 }
                  int numero1=sc.nextInt();
                  Chat ch=(Chat)chat.get(numero1);
-              ClientDs.out.write("4:"+ch.getIndirizzo());
-              ClientDs.out.flush();
+              ClientDs.bw.write("4:"+ch.getIndirizzo());
+              ClientDs.bw.flush();
               ch.azioni_chat();
                 break;
             case 5:
                //uscire
                 ciclo=false;
-                 ClientDs.out.write("5:");
-              ClientDs.out.flush();
+                 ClientDs.bw.write("5:");
+              ClientDs.bw.flush();
                 break;
         }
     }
