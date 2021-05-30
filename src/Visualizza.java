@@ -49,37 +49,45 @@ public class Visualizza {
        canali=ca;
     }
      //chat
-    public void sceltaCanale() throws IOException, ClassNotFoundException {
+    public void sceltaChat() throws IOException, ClassNotFoundException {
+        Scanner sc=new Scanner(System.in);
         boolean chat=true;
-        String numeri=canali.ncose();
-        String[]quantita=numeri.split(":");
-        for (int i = 0; i < Integer.parseInt(quantita[0]); i++) {
-            System.out.println(i+" per accedere al canale "+canali.nomechat(i));
-        }
-        for (int i = 0; i < Integer.parseInt(quantita[1]); i++) {
-           System.out.println((i+ Integer.parseInt(quantita[0]))+" per accedere al canale "+canali.nomecategoria(i));  
-        }
-          int numero=sc.nextInt();
-          if(numero> Integer.parseInt(quantita[0])){
-              chat=false;
-              numero=numero- Integer.parseInt(quantita[0]);
+       boolean ciclo=true;
+       while(ciclo==true){
+           String canale= ClientDs.in.readLine();
+           if(canale!=null){
+               System.out.println(canale);
+           }else{
+               ciclo=false;
+           }
+       }
+        System.out.println("inserisci il numero della chat a cui vuoi accedere");
+        String comando=sc.next();
+        ClientDs.bw.write(comando);
+        
           }
-          if(chat==true){
-              Chat ch=(Chat) canali.getChat().get(numero);
-              ClientDs.bw.write("3:"+ch.getIndirizzo());
-              ClientDs.bw.flush();
-              ch.azioni_chat();
-          }else{
-              categorie ct=(categorie) canali.getCategorie().get(numero);
-              ClientDs.bw.write("4:"+numero);
-              ClientDs.bw.flush();
-              ct.azioni_categorie();
-              
-          }
-        }
+    public void sceltaCategorie() throws IOException{
+     Scanner sc=new Scanner(System.in);
+        boolean chat=true;
+       boolean ciclo=true;
+       while(ciclo==true){
+           String canale= ClientDs.in.readLine();
+           if(canale!=null){
+               System.out.println(canale);
+           }else{
+               ciclo=false;
+           }
+       }
+        System.out.println("inserisci il numero della chat a cui vuoi accedere");
+        String comando=sc.next();
+        ClientDs.bw.write(comando);
+        
+          }   
+    }
+        
         
 
-        }  
+         
 
 
     

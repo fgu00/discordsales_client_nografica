@@ -82,15 +82,20 @@ public class visualizza_canali {
     }
      public void Accedi_canali() throws IOException, ClassNotFoundException{
         Scanner sc=new Scanner(System.in);
-        ArrayList<Canali>indirizzi_canali= ClientDs.ac.getIndirizzi_canali();
-        for (int i = 0; i < indirizzi_canali.size()-1; i++) {
-            System.out.println(i+1+" per accedere al canale "+indirizzi_canali.get(i).getImmagine()+indirizzi_canali.get(i).getNome());  
-        }
-        System.out.println("inserisci il numero del canale a cui vuoi accedere");
-        int numero=sc.nextInt()-1;
-        ClientDs.bw.write("3:"+ClientDs.ac.getcanali(numero).getIndirizzo());
-        ClientDs.bw.flush();
-       ca.azione_canale();
+         boolean chat=true;
+       boolean ciclo=true;
+       while(ciclo==true){
+           String canale= ClientDs.in.readLine();
+           if(canale!=null){
+               System.out.println(canale);
+           }else{
+               ciclo=false;
+           }
+       }
+         System.out.println("inserisci il numero del canale a cui vuoi accedere");
+         String comando=sc.next();
+         ClientDs.bw.write(comando);
+         ca.azione_canale();
     }
      public void elimina_canale() throws IOException{
          ObjectOutputStream o1=new ObjectOutputStream(ClientDs.s.getOutputStream());

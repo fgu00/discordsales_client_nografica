@@ -33,7 +33,7 @@ private int tipologia;
 private OutputStream oi;
 private ObjectOutputStream oo;
 
-    public Chat(String nome) {
+    public Chat() {
         
     }
     public String getNome(){

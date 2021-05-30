@@ -96,10 +96,16 @@ public class Canali implements Serializable{
                     ClientDs.bw.flush();
                     break;
                 case 3:
-                    //accedere a chat e categorie
-                    vs.sceltaCanale();
+                    //accedere a chat 
+                    ClientDs.bw.write("3:");
+                    vs.sceltaChat();
                     break;
                 case 4:
+                    //accesso alle categorie
+                    ClientDs.bw.write("4:");
+                    vs.sceltaCategorie();
+                    break;
+                case 5:
                     //creare una chat
                     System.out.println("inserisci il nome della nuova chat");
                     String nomec=sc.next();
@@ -122,44 +128,55 @@ public class Canali implements Serializable{
                     ClientDs.bw.write("5:"+nomec+":"+tipologia);
                     ClientDs.bw.flush();
                     break;
-                case 5:
+                case 6:
                     //creare una categoria
                     System.out.println("inserisci il nome della nuova categoria");
                     String nomeg=sc.next();
                     ClientDs.bw.write("6:"+nomeg);
                     ClientDs.bw.flush();
                     break;
-                case 6:
-                    //eliminare una chat
-                    for (int i = 0; i < chat.size(); i++) {
-                        Chat ca=(Chat) chat.get(i);
-                        System.out.println(i+" per eliminare la chat "+ca.getNome());   
-                    }
-                int numero=sc.nextInt();
-                ClientDs.bw.write("7:"+numero);
-                ClientDs.bw.flush();
-                    String m=(String) ClientDs.o.readObject();
-                    if(m.equals("")){
-                        System.out.println("chat eliminata con sucesso");
-                    }
-                    break;
                 case 7:
-                    //eliminare una categoria
-                    for (int i = 0; i < categorie.size(); i++) {
-                        categorie ca=(categorie) categorie.get(i);
-                        System.out.println(i+" per eliminare la categoria "+ca.getNome());   
-                    }
-                int numero2=sc.nextInt();
-                ClientDs.bw.write("8:"+numero2);
-                ClientDs.bw.flush();
-                    String m2=(String) ClientDs.o.readObject();
-                    if(m2.equals("")){
-                        System.out.println("categoria eliminata con sucesso");
-                    }
+                    //eliminare una chat
+                    ClientDs.bw.write("7:"); 
+                         ClientDs.bw.flush();
+                     boolean ciclo3=true;
+                     while(ciclo3==true){
+                     String canale= ClientDs.in.readLine();
+                     if(canale!=null){
+                     System.out.println(canale);
+                     }else{
+                     ciclo=false;
+                     }
+                     }
+                         System.out.println("selezione la chat da eliminare");
+                         String scelta=sc.next();
+                         ClientDs.bw.write(scelta); 
+                         ClientDs.bw.flush();
+                         System.out.println(ClientDs.in.readLine());
                     break;
                 case 8:
+                    //eliminare una categoria
+                    ClientDs.bw.write("8:"); 
+                         ClientDs.bw.flush();
+                     boolean ciclo4=true;
+                     while(ciclo4==true){
+                     String canale= ClientDs.in.readLine();
+                     if(canale!=null){
+                     System.out.println(canale);
+                     }else{
+                     ciclo=false;
+                     }
+                     }
+                         System.out.println("selezione la chat da eliminare");
+                         String scelta1=sc.next();
+                         ClientDs.bw.write(scelta1); 
+                         ClientDs.bw.flush();
+                         System.out.println(ClientDs.in.readLine());
+                    break;
+                case 9:
                   ClientDs.bw.write("9:");    
                     ciclo=false;
+                    break;
             }
             }
         }
